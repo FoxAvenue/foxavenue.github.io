@@ -10,6 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/main.css">
 	<title>Crok</title>
 
 	<link rel="icon" href="/assets/favicon.ico" />
@@ -30,6 +31,51 @@
 	
 </head>
 <body>
+	<!------------------------------------TOPBAR-------------------------->
+	<header>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
+    <div class="header container">
+      <div class="logo micro-5-regular">
+        <a href="/" style="all: unset; cursor:pointer;"><span>foxx_avenue.</span></a>
+      </div>
+
+      <div class="controls">
+        <div class="nav-links">
+          <span class="acont">
+            <a data-text="[WORK]" href="/studio#work" @click.prevent="handleClick('#work')" class="nav-link desktop-a">
+              [WORK]
+            </a>
+          </span>
+          <span class="acont">
+            <a data-text="[SERVICES]" href="/studio#skills" @click.prevent="handleClick('#skills')" class="nav-link desktop-a">
+              [SERVICES]
+            </a>
+          </span>
+          <span class="acont">
+            <a data-text="[CONTACTS]" href="/studio#contact" @click.prevent="handleClick('#contact')" class="nav-link desktop-a">
+              [CONTACT]
+            </a>
+          </span>
+        </div>
+
+        <div @click="toggleLight()" class="switch">
+          <Switch />
+        </div>
+
+        <div @click="toggleNav()" class="hamburger">
+          <Hamburger :active="mobileNavActive" />
+        </div>
+      </div>
+    </div>
+  </header>
+  <!----------------------------------------------->
+
+
+
+
+
 	<div class="content-wrapper">
 		<div class="loading" style="display: none;">
 			<div class="loading-logo">
@@ -97,31 +143,6 @@
 						</div>
 					</div>
 					<div class="section6-link">
-						<div class="section6-link-item">
-							<a href="https://twitter.com/junni_jp" target="_blank" rel="noopener noreferrer">
-								
-							</a>
-						</div>
-						<div class="section6-link-item">
-							<a href="https://www.facebook.com/junni.jp" target="_blank" rel="noopener noreferrer">
-								
-							</a>
-						</div>
-						<div class="section6-link-item">
-							<a href="https://www.instagram.com/junni_jp/" target="_blank" rel="noopener noreferrer">
-								
-							</a>
-						</div>
-						<div class="section6-link-item">
-							<a href="https://note.com/junni_jp" target="_blank" rel="noopener noreferrer">
-								
-							</a>
-						</div>
-						<div class="section6-link-item">
-							<a href="https://junni.co.jp/" target="_blank" rel="noopener noreferrer">
-					
-							</a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -176,5 +197,16 @@
 		</div>
 	</div>
 	<script src="./js/script.js"></script>
+	<style>
+		header {
+			background-color: #e4e4e4;
+		}
+		.logo {
+			color: black;
+		}
+		.nav-links a, p {
+			color: black;
+		}
+	</style>
 </body>
 </html>
