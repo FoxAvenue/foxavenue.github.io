@@ -1,227 +1,175 @@
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-	<!-- Google tag (gtag.js) -->
-	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1L3B66CST"></script> -->
-	<script>
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1L3B66CST"></script> -->
 
-	</script>
-
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="./css/style.css">
-	<link rel="stylesheet" href="./css/main.css">
-	<title>Crok</title>
-
-	<link rel="icon" href="/assets/favicon.ico" />
-
-	<meta name="description" content="Multimedia design studio" />
-	<meta property="og:locale" content="ja_JP">
-	<meta property="og:site_name" content="">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="">
-	<meta property="og:description" content="">
-	<meta property="og:url" content="">
-	<meta property="og:image" content="">
-	
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="">
-	<meta name="twitter:description" content="">
-	<meta name="twitter:image" content="">
-	
-</head>
-<body class="light">
-	<!------------------------------------TOPBAR-------------------------->
-	<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="../assets/loader/loader.css">
+    
+    <link rel="icon" href="/assets/favicon.ico" />
+    
+    <meta name="description" content="Multimedia design studio" />
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    
+    <!-- Подключение шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
-    <div class="header container">
-      <div class="logo micro-5-regular">
-        <a href="/" style="all: unset; cursor:pointer;"><span>foxx_avenue.</span></a>
-      </div>
 
-      <div class="controls">
-        <div class="nav-links">
-          <span class="acont">
-            <a data-text="[EXPERIENCE]" href="/studio" class="nav-link desktop-a">
-              [ENTER]
-            </a>
-          </span>
-<!--           <span class="acont">
-            <a data-text="[SERVICES]" href="/studio#skills" class="nav-link desktop-a">
-              [SERVICES]
-            </a>
-          </span>
-          <span class="acont">
-            <a data-text="[CONTACTS]" href="/studio#contact" class="nav-link desktop-a">
-              [CONTACT]
-            </a>
-          </span> -->
+    <title>Crok</title>
+</head>
+<body class="light">
+    <!------------------------------------TOPBAR-------------------------->  
+    <header>
+        <div class="loader-cont" id="loader-cont">
+            <div class="loader_bg">
+                <div class="loader"></div>
+            </div>
         </div>
 
-        <div onclick="toggleLight()" class="switch">
-     			<div class="switch-icon" onclick="toggleLight()">
-						    <div class="sun"><img alt="sun-icon" src="../assets/sun.svg" /></div>
-						    <div class="moon"><img alt="moon-icon" src="../assets/moon.svg" /></div>
-						    <div class="ball"></div>
-						</div>
-					</div>
+        <div class="header container">
+            <div class="logo micro-5-regular">
+                <a href="/" style="all: unset; cursor:pointer;"><span>foxx_avenue.</span></a>
+            </div>
+
+            <div class="controls">
+                <div class="nav-links">
+                    <span class="acont">
+                        <a data-text="[EXPERIENCE]" href="/studio" class="nav-link desktop-a">[ENTER]</a>
+                    </span>
+                </div>
+
+                <div onclick="toggleLight()" class="switch">
+                    <div class="switch-icon">
+                        <div class="sun"><img alt="sun-icon" src="../assets/sun.svg" /></div>
+                        <div class="moon"><img alt="moon-icon" src="../assets/moon.svg" /></div>
+                        <div class="ball"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="loading" style="display: none;">
+            <div class="loading-logo"></div>
         </div>
 
-    <!--     <div @click="toggleNav()" class="hamburger">
-          <Hamburger :active="mobileNavActive" />
-        </div> -->
+        <div class="section-wrap" data-visible="false">
+            <div class="scroll">
+                <button class="scroll-btn">SCROLL</button>
+                <div class="scroll-fillCircle"></div>
+                <svg></svg>
+            </div>
+            <canvas id="canvas"></canvas>
+
+            <div class="subtitles" style="display: none;"></div>
+            <div class="section section1"></div>
+            <div class="section section2"></div>
+            <div class="section section3"></div>
+            <div class="section section4"></div>
+            <div class="section section5">
+                <div class="section5-content-sp" data-media="sp"></div>
+                <div class="section5-content" data-media="pc"></div>
+            </div>
+            <div class="section section6">
+                <div class="section6-main">
+                    <div class="section6-main-head">
+                        <div id="next"></div>
+                    </div>
+                    <div class="section6-main-link"></div>
+                </div>
+                <div class="section6-link"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-timeline">
+                <div class="footer-timeline-item" data-section="1"></div>
+                <div class="footer-timeline-item" data-section="2"></div>
+                <div class="footer-timeline-item" data-section="3"></div>
+                <div class="footer-timeline-item" data-section="4"></div>
+                <div class="footer-timeline-item" data-section="5"></div>
+                <div class="footer-timeline-item" data-section="6"></div>
+            </div>
+            <div class="footer-copyright"></div>
+            <div class="intro-skip">
+                <div class="intro-skip-inner">
+                    <div class="intro-skip-txt">
+                        <div class="intro-skip-txt-item skip"></div>
+                        <div class="intro-skip-txt-item ok"></div>
+                    </div>
+                    <div class="intro-skip-baku"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-  <!-- <MobileNav @toggleActive="toggleNav()" :active="mobileNavActive" /> -->
-  <!------------Switch.vue-------------------------->
 
+    <div class="enter-button-cont">
+        <a href="/studio"><button class="enter-button hidden">ENTER</button></a>
+        <div class="scroller">
+            <img alt="arrow down" class="arrowDown" src="assets/arrowDown.svg" />
+        </div>
+    </div>
 
-  <!----------------------------------------------->
+    <!-- Скрипты -->
+    <script src="./js/script.js"></script>
+    <script type="module" src="../assets/loader/loader.js"></script>
+    <script>
+        function toggleLight() {
+            document.body.classList.toggle("light");
+            // Переключение визуального состояния переключателя (шарика)
+            const ball = document.querySelector(".switch-icon .ball");
+            ball.classList.toggle("active");
+        }
+    </script>
+    <script type="module">
+        import { initLoader } from '../assets/loader/loader.js';
 
-
-
-
-
-	<div class="content-wrapper">
-		<div class="loading" style="display: none;">
-			<div class="loading-logo">
-			
-				</div>
-			</div>
-			<div class="section-wrap" data-visible="false">
-				<div class="scroll">
-					<button class="scroll-btn">SCROLL</button>
-					<div class="scroll-fillCircle"></div>
-					<svg>
-					</svg>
-				</div>
-				<canvas id="canvas"></canvas>
-
-				<div class="subtitles" style= "display: none;">
-				</div>
-				<div class="section section1">
-				</div>
-				<div class="section section2">
-				</div>
-				<div class="section section3">
-				</div>
-				<div class="section section4"></div>
-				<div class="section section5">
-					<div class="section5-content-sp" data-media="sp">
-						<!-- <img src="./assets/outro.png" alt=""> -->
-					</div>
-					<div class="section5-content" data-media="pc">
-						
-					</div>
-				</div>
-				<div class="section section6">
-					<div class="section6-main">
-						<div class="section6-main-head">
-							<div id="next"></div>
-						</div>
-						<div class="section6-main-link">
-						</div>
-					</div>
-					<div class="section6-link">
-					</div>
-				</div>
-			</div>
-			<div class="footer">
-				<div class="footer-timeline">
-					<div class="footer-timeline-item" data-section="1"></div>
-					<div class="footer-timeline-item" data-section="2"></div>
-					<div class="footer-timeline-item" data-section="3"></div>
-					<div class="footer-timeline-item" data-section="4"></div>
-					<div class="footer-timeline-item" data-section="5"></div>
-					<div class="footer-timeline-item" data-section="6"></div>
-				</div>
-				<div class="footer-copyright">
-					
-				</div>
-				<div class="intro-skip">
-					<div class="intro-skip-inner">
-						<div class="intro-skip-txt">
-							<div class="intro-skip-txt-item skip">
-								
-							</div>
-							<div class="intro-skip-txt-item ok">
-								
-							</div>
-						</div>
-						<div class="intro-skip-baku">
-							
-						</div>
-					</div>
-					
-				</div>
-
-			</div>
-		</div>
-		<div class="enter-button-cont">
-			<a href="/studio"><button class="enter-button hidden">ENTER</button></a>
-			   <div class="scroller">
-		  
-		            <img
-		              alt="arrow down"
-		              class="arrowDown"
-		              src="assets/arrowDown.svg"
-		            />
-		       
-		       
-		      </div>
-<!-- 		      <a href="/studio">
-		      	<div class="skip">
-		      		SKIP
-		      	</div>
-		      </a> -->
-		</div>
-	</div>
-	<script src="./js/script.js"></script>
-	<script>
-	  function toggleLight() {
-    document.body.classList.toggle("light");
-
-    // Переключение визуального состояния переключателя (шарика)
-    const ball = document.querySelector(".switch-icon .ball");
-    ball.classList.toggle("active");
-  }
-
-  // Переключатель мобильной навигации
-
-
-	</script>
-	<style lang="scss" scoped>
-
-
-		.ball {
-			background:none!important;
-		}
-		.light header {
-			background: none;
-			border-bottom: none;
-		}
-		 .nav-links {
-        
-          display: unset!important;
-        
-      }
-      .nav-links,
-      .header-buttons {
-
-        
-          display: unset!important;
-        
-      }
-      .nav-links a {
-      	margin: 0!important;
-      }
-      .acont {
-      	text-align: right;
-      }
-
-
-	</style>
+        document.addEventListener('DOMContentLoaded', () => {
+            initLoader(); // Вызов функции инициализации лоадера
+        });
+    </script>
+    
+    <style lang="scss" scoped>
+        .ball {
+            background: none !important;
+        }
+        .light header {
+            background: none;
+            border-bottom: none;
+        }
+        .nav-links {
+            display: unset !important;
+        }
+        .nav-links,
+        .header-buttons {
+            display: unset !important;
+        }
+        .nav-links a {
+            margin: 0 !important;
+        }
+        .acont {
+            text-align: right;
+        }
+    </style>
 </body>
 </html>
