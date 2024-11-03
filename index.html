@@ -34,14 +34,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
 
-    <title>Crok</title>
+    <title>moono</title>
 </head>
 <body class="light">
-		<div class="loader-cont" id="loader-cont">
+<!-- 		<div class="loader-cont" id="loader-cont">
             <div class="loader_bg">
                 <div class="loader"></div>
             </div>
-        </div>
+        </div> -->
     <!------------------------------------TOPBAR-------------------------->  
     <header>
         
@@ -235,11 +235,11 @@ a.desktop-a:hover {
 }
 
 button {
-    padding: 15px !important;
+/*    padding: 15px !important;*/
     margin: auto;
     max-width: unset;
     border-radius: 50px;
-    background: none;
+    background: linear-gradient(45deg, rgb(236 179 179 / 80%), rgb(226 203 255 / 80%), rgb(154 235 206 / 80%));
     font-size: 22px;
     color: #ffffff;
     max-width: 295px;
@@ -248,17 +248,23 @@ button {
     top: auto !important;
     bottom: 1%;
     font-weight: normal;
-    
-    /* Начальные настройки бордера */
-    border: 2px solid rgba(255, 255, 255, 0.7); /* Прозрачный бордер */
-    transition: border-color 0.45s ease, border-width 0.45s ease;
+
+    /* Настройки бордера */
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    transition: background 0.45s ease; /* Плавный переход фона */
 }
+
+/* Убираем анимацию */
+
 
 button:hover {
     border-color: rgba(255, 255, 255, 1); /* Белый бордер */
     border-width: 2px; /* Утолщенный бордер при наведении */
 }
 
+.switch {
+    display: unset!important;
+}
 
 
 
