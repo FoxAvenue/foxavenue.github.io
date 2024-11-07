@@ -50,7 +50,7 @@
             <div class="logo micro-5-regular">
                 <a href="/studio" style="all: unset; cursor:pointer;"><span>moono.</span></a>
             </div>
-
+            <!-- <div class="cross-arrow"></div> -->
             <div class="controls">
                 <!-- <div class="nav-links">
                     <span class="acont">
@@ -124,12 +124,79 @@
         </div>
     </div>
 
+    <a href="/studio"><button class="enter-button hidden">/enter</button></a>
+
     <div class="enter-button-cont">
-        <a href="/studio"><button class="enter-button hidden">/enter</button></a>
+        
 <!--             <div class="scroller">
             <img alt="" class="arrowDown" src="assets/arrowDown.svg" />
         </div>  -->
+        <div class="left-cont">
+            
+
+
+
+              <div class="arrow-inf">
+                <div class="arrow-content"></div> <!-- Сюда добавьте содержимое блока arrow-inf -->
+              </div>
+        </div>
+
+     <div class="ruler"></div>
+
+
+     </div>
+     <div class="cont-right">
+        <div class="line-container">
+            <div class="stages-cont">
+                <span class="stages-text">STAGES</span> 
+                <div class="half-line">
+                  <div class="notch"></div>
+                </div>
+              </div>
+              <div class="line">
+                <div class="divider">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+            </div>
+    <div class="triangle-indicator"></div>
+
+</div>
+
+</div>
+<div class="line-container">
+<div class="stages-cont">
+    <span class="stages-text">STAGES</span> 
+    <div class="half-line">
+      <div class="notch"></div>
     </div>
+  </div>
+  <div class="line">
+    <div class="divider">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="triangle-indicator"></div>
+
+</div>
+
+</div>
+
+         
+     </div>
+     
+
 
     <!-- Скрипты -->
     <script src="./js/script.js"></script>
@@ -154,8 +221,52 @@
             initLoader(); // Вызов функции инициализации лоадера
         });
     </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", 
+        function createRuler() {
+        const ruler = document.querySelector('.ruler');
+        ruler.innerHTML = ''; // очищаем содержимое перед добавлением новых засечек
+
+        let tickCount;
+        const screenWidth = window.innerWidth;
+
+        // Определяем количество засечек в зависимости от ширины экрана
+        if (screenWidth < 700) { // Мобильные устройства
+            tickCount = 30;
+        } else if (screenWidth < 992) { // Планшеты
+            tickCount = 40;
+        } else { // Десктопы
+            tickCount = 60;
+        }
+
+        for (let i = 0; i < tickCount; i++) {
+            const tick = document.createElement('div');
+            tick.classList.add('tick');
+
+            // Устанавливаем отступ между засечками для равномерного распределения
+            tick.style.marginRight = `calc((100% - ${tickCount}px) / ${tickCount - 1})`;
+
+            // Добавляем текст "moono" под каждую 7-ю засечку
+            if (i % 7 === 0) {
+                const label = document.createElement('div');
+                label.classList.add('mo');
+                label.innerText = 'moono';
+                tick.appendChild(label);
+            }
+
+            ruler.appendChild(tick);
+        }
+    }
+
+        );
+
+    </script>
     
     <style lang="scss" scoped>
+        .footer {
+            display: none;
+        }
         .ball {
             background: none !important;
         }
@@ -235,12 +346,12 @@ a.desktop-a:hover {
 }
 
 button {
-/*    padding: 15px !important;*/
+    padding: 15px !important;
     margin: auto;
     max-width: unset;
-    border-radius: 50px;
-    background: linear-gradient(45deg, rgb(236 179 179 / 80%), rgb(226 203 255 / 80%), rgb(154 235 206 / 80%));
-    font-size: 22px;
+    border-radius: 5000px;
+    background: #00000000;
+    /* font-size: 22px; */
     color: #ffffff;
     max-width: 295px;
     width: unset;
@@ -248,18 +359,16 @@ button {
     top: auto !important;
     bottom: 1%;
     font-weight: normal;
-
-    /* Настройки бордера */
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    transition: background 0.45s ease; /* Плавный переход фона */
+    border: 12px solid rgb(255 255 255 / 70%);
+    transition: background 0.45s ease;
+    font-family: 'Neu';
+    font-weight: lighter;
+    z-index: 100;
 }
 
-/* Убираем анимацию */
-
-
 button:hover {
-    border-color: rgba(255, 255, 255, 1); /* Белый бордер */
-    border-width: 2px; /* Утолщенный бордер при наведении */
+    border-color: rgba(255, 255, 255, 1); /* Белый бордер */    
+    color: white;
 }
 
 .switch {
@@ -270,6 +379,266 @@ button:hover {
 
 
 
-    </style>
+.enter-button-cont {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: self-start;
+    padding: 0 5em;
+        @media (max-width: 890px) {
+            padding: 0 1em;
+        }
+}
+.enter-button {
+    padding: 7px;
+    opacity: 1;
+    -webkit-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+    -webkit-transition-delay: 1s;
+    transition-delay: 1s;
+    cursor: pointer;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+        .enter-button-cont {
+            padding-bottom: 2em; /* чтобы освободить место для ruler */
+            padding-top: 2em;
+                @media (max-width: 890px) {
+                    padding-top: 4em;
+                }
+        }
+
+        .ruler {
+            width: 100%;
+            height: 2px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .tick {
+            width: 1px;
+            height: 0.5em;
+            background-color: #000;
+            margin-right: calc((100% - 60px) / 59); /* равномерное распределение засечек */
+            position: relative;
+        }
+
+.mo {
+    font-family: 'Neu', sans-serif;
+    font-size: 1em;
+    color: #000;
+    /* margin-top: 5px; */
+    text-align: center;
+    /* white-space: nowrap; */
+    /* position: absolute; */
+    height: 2em;
+    display: flex;
+    /* top: 25px; */
+    align-items: flex-end;
+    font-weight: 900;
+}
+
+
+
+.arrow-inf {
+    position: relative;
+    width: 25px;
+    height: 50px;
+    overflow: hidden;
+    /* border: 2px solid #000; */
+    margin-right: auto;
+    margin-top: auto;
+    /* margin-bottom: -90px; */
+/*        @media (max-width: 890px) {
+                width: 30px;
+                height: 60px;
+                margin-bottom: 4em;
+        }*/
+}
+
+
+
+.arrow-content {
+    position: absolute;
+    width: 100%;
+    height: 178%;
+    background-image: url('../assets/arrow_inf.png');
+    background-size: contain;
+    animation: scroll-up 4s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+
+
+
+
+
+
+
+.line-container {
+    display: flex;
+    align-items: center;
+    /* position: relative; */
+    
+}
+
+.line {
+  position: relative;
+  height: 90vh;
+  width: 1px;
+  background-color: black;
+  margin-right: 16px;
+}
+
+.divider {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dot {
+  width: 3px;
+  height: 1px;
+  background-color: black;
+  border-radius: 50%;
+  margin: 4px auto;
+}
+
+.triangle-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-right: 10px solid black;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+}
+
+.stages-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 10px;
+
+}
+
+.half-line {
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: black;
+    margin-right: 1em;
+}
+
+.notch {
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  width: 5px;
+  height: 1px;
+  background-color: black;
+  transform: translateY(-50%);
+}
+.stages-cont {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: flex-start;
+    height: 50%;
+}
+.cross-arrow {
+    width: 1em;
+    height: 1em;
+    background-image: url('../assets/cross_arrow.png');
+    background-size: cover;
+    animation: rotate 10s linear infinite; /* добавляем анимацию */
+
+}
+
+/* Определяем ключевые кадры для постоянной ротации */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.cont-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.1em;
+        @media (max-width: 890px) {
+            padding: 0 1em;
+            display: none;
+        }
+}
+.left-cont {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.logo {
+    width: unset;
+}
+header .header .controls {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 0;
+    display: flex;
+    /* -webkit-box-pack: end; */
+    -ms-flex-pack: end;
+    /* justify-content: end; */
+    /* -webkit-box-align: center; */
+    -ms-flex-align: center;
+    /* align-items: center; */
+}
+header .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+</style>
 </body>
 </html>
