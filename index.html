@@ -37,11 +37,11 @@
     <title>moono</title>
 </head>
 <body class="light">
-		<div class="loader-cont" id="loader-cont">
+<!-- 		<div class="loader-cont" id="loader-cont">
             <div class="loader_bg">
                 <div class="loader"></div>
             </div>
-        </div>
+        </div> -->
     <!------------------------------------TOPBAR-------------------------->  
     <header>
         
@@ -50,13 +50,13 @@
             <div class="logo micro-5-regular">
                 <a href="/studio" style="all: unset; cursor:pointer;"><span>moono.</span></a>
             </div>
-            <!-- <div class="cross-arrow"></div> -->
+            <div class="cross-arrow"></div>
             <div class="controls">
-                <!-- <div class="nav-links">
+                <div class="nav-links">
                     <span class="acont">
-                        <a data-text="[ENTER]" href="/studio" class="nav-link desktop-a enter">[EXPERIENCE]</a>
+                        <a href="/studio" class="nav-link desktop-a enter">enter</a>
                     </span>
-                </div> -->
+                </div>
 
                 <div onclick="toggleLight()" class="switch">
                     <div class="switch-icon">
@@ -233,11 +233,11 @@
 
         // Определяем количество засечек в зависимости от ширины экрана
         if (screenWidth < 700) { // Мобильные устройства
-            tickCount = 30;
+            tickCount = 25;
         } else if (screenWidth < 992) { // Планшеты
             tickCount = 40;
         } else { // Десктопы
-            tickCount = 60;
+            tickCount = 80;
         }
 
         for (let i = 0; i < tickCount; i++) {
@@ -248,7 +248,7 @@
             tick.style.marginRight = `calc((100% - ${tickCount}px) / ${tickCount - 1})`;
 
             // Добавляем текст "moono" под каждую 7-ю засечку
-            if (i % 7 === 0) {
+            if (i % 14 === 0) {
                 const label = document.createElement('div');
                 label.classList.add('mo');
                 label.innerText = 'moono';
@@ -293,57 +293,72 @@
 
         .acont {
     display: inline-block;
-    overflow: hidden;
-    height: 2em;
-    background: #ffffff;
     color: black;
     text-align: center;
+    border: .15rem solid #242424;
+    border-radius: 50px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    width: 80px;
+    justify-content: center;
+    transition: all 0.21s ease;
+    background: 0;
+        @media (min-width: 890px) {
+            display: none;
+        }
+
+
 }
 
 a.desktop-a {
-    display: block;
-    height: 100%;
-    transform: translateY(0);
-    animation: slide 3s infinite;
-    transition: transform 0.1s ease;
-    background-color: yellow;
 
+display: unset;
+height: unset;
+transform: translateY(0);
+font-size: 1.7em;
+            @media (max-width: 890px) {
+            font-size: 2.6em;
+        }
 
 }
 
-a.desktop-a::before {
-    content: attr(data-text); /* Используем текст ссылки */
-    display: block;
-    background-color: #2d2d2d;
-    color: white;
-}
+
 
 a.desktop-a:hover {
-/*    animation: none; /* Останавливаем цикличную анимацию при наведении */*/
-/*    transform: translateY(0);*/
+
+
+}
+.acont:hover {
+   background-color: #ffffff7d;
+   border-color: grey;
+
+
+
+
 }
 .switch-icon div{
     cursor: unset;
 }
 
 
-@keyframes slide {
+/*@keyframes slide {
     0% {
-        transform: translateY(0); /* Исходное положение */
+        transform: translateY(0);
     }
     16.67% {
-        transform: translateY(-100%); /* Подъем за 1 секунду */
+        transform: translateY(-100%);
     }
     33.33% {
-        transform: translateY(-100%); /* Пауза 1 секунда наверху */
+        transform: translateY(-100%);
     }
     50% {
-        transform: translateY(0); /* Спуск вниз за 1 секунду */
+        transform: translateY(0);
     }
     100% {
-        transform: translateY(0); /* Пауза 3 секунды внизу */
+        transform: translateY(0);
     }
-}
+}*/
 
 button {
     padding: 15px !important;
@@ -364,6 +379,9 @@ button {
     font-family: 'Neu';
     font-weight: lighter;
     z-index: 100;
+                @media (max-width: 890px) {
+            display: none;
+        }
 }
 
 button:hover {
@@ -432,43 +450,44 @@ button:hover {
 
         .tick {
             width: 1px;
-            height: 0.5em;
+            height: 0.3em;
             background-color: #000;
             margin-right: calc((100% - 60px) / 59); /* равномерное распределение засечек */
             position: relative;
         }
 
 .mo {
-    font-family: 'Neu', sans-serif;
+    /* font-family: 'Neu', sans-serif; */
     font-size: 1em;
     color: #000;
     /* margin-top: 5px; */
     text-align: center;
     /* white-space: nowrap; */
     /* position: absolute; */
-    height: 2em;
+    height: 1.4em;
     display: flex;
     /* top: 25px; */
     align-items: flex-end;
-    font-weight: 900;
+    /* font-weight: 900; */
+    font-style: italic;
+    font-size: 1.5em;
 }
-
 
 
 .arrow-inf {
     position: relative;
-    width: 25px;
-    height: 50px;
+    width: 30px;
+    height: 60px;
     overflow: hidden;
     /* border: 2px solid #000; */
     margin-right: auto;
     margin-top: auto;
     /* margin-bottom: -90px; */
-/*        @media (max-width: 890px) {
-                width: 30px;
-                height: 60px;
-                margin-bottom: 4em;
-        }*/
+        @media (max-width: 890px) {
+/*                width: 50px;
+                height: 100px;*/
+                margin-bottom: 2em;
+        }
 }
 
 
@@ -578,6 +597,9 @@ button:hover {
     background-image: url('../assets/cross_arrow.png');
     background-size: cover;
     animation: rotate 10s linear infinite; /* добавляем анимацию */
+         @media (max-width: 890px) {
+            display: none;
+        }
 
 }
 
@@ -638,6 +660,12 @@ header .header {
     align-items: center;
     width: 100%;
 }
+.nav-link .desktop-a .enter {
+    @media (min-width: 890px) {
+            display: none;
+        }
+}
+
 
 </style>
 </body>
