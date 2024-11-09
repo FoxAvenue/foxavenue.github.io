@@ -223,43 +223,62 @@
     </script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", 
-        function createRuler() {
-        const ruler = document.querySelector('.ruler');
-        ruler.innerHTML = ''; // очищаем содержимое перед добавлением новых засечек
+document.addEventListener("DOMContentLoaded", function createRuler() {
+    const ruler = document.querySelector('.ruler');
+    ruler.innerHTML = ''; // Очищаем содержимое перед добавлением новых засечек
 
-        let tickCount;
-        const screenWidth = window.innerWidth;
+    const screenWidth = window.innerWidth;
+    let tickCount;
+    let minLabels;
+    let maxLabels;
 
-        // Определяем количество засечек в зависимости от ширины экрана
-        if (screenWidth < 700) { // Мобильные устройства
-            tickCount = 25;
-        } else if (screenWidth < 992) { // Планшеты
-            tickCount = 40;
-        } else { // Десктопы
-            tickCount = 80;
-        }
-
-        for (let i = 0; i < tickCount; i++) {
-            const tick = document.createElement('div');
-            tick.classList.add('tick');
-
-            // Устанавливаем отступ между засечками для равномерного распределения
-            tick.style.marginRight = `calc((100% - ${tickCount}px) / ${tickCount - 1})`;
-
-            // Добавляем текст "moono" под каждую 7-ю засечку
-            if (i % 14 === 0) {
-                const label = document.createElement('div');
-                label.classList.add('mo');
-                label.innerText = 'moono';
-                tick.appendChild(label);
-            }
-
-            ruler.appendChild(tick);
-        }
+    // Условия для разных разрешений экранов
+    if (screenWidth < 700) { // Мобильные устройства
+        tickCount = 25;
+        minLabels = 3;
+        maxLabels = 4;
+    } else if (screenWidth < 992) { // Планшеты
+        tickCount = 40;
+        minLabels = 4;
+        maxLabels = 5;
+    } else { // Десктопы
+        tickCount = 80;
+        minLabels = 6;
+        maxLabels = 8;
     }
 
-        );
+    // Определяем количество меток
+    const labelCount = Math.min(Math.max(minLabels, maxLabels), maxLabels);
+    
+    // Определяем позиции меток: вторая, предпоследняя и равномерно между ними
+    const labelPositions = [1]; // Начинаем с второй позиции
+    const interval = Math.floor((tickCount - 3) / (labelCount - 1));
+
+    for (let i = 1; i < labelCount - 1; i++) {
+        labelPositions.push(1 + i * interval);
+    }
+
+    labelPositions.push(tickCount - 2); // Добавляем предпоследнюю позицию
+
+    for (let i = 0; i < tickCount; i++) {
+        const tick = document.createElement('div');
+        tick.classList.add('tick');
+
+        // Устанавливаем отступ между засечками для равномерного распределения
+        tick.style.marginRight = `calc((100% - ${tickCount}px) / ${tickCount - 1})`;
+
+        // Добавляем метку "moono" на указанных позициях
+        if (labelPositions.includes(i)) {
+            const label = document.createElement('div');
+            label.classList.add('mo');
+            label.innerText = 'moono';
+            tick.appendChild(label);
+        }
+
+        ruler.appendChild(tick);
+    }
+});
+
 
     </script>
     
@@ -454,6 +473,8 @@ button:hover {
             background-color: #000;
             margin-right: calc((100% - 60px) / 59); /* равномерное распределение засечек */
             position: relative;
+                display: flex;
+    justify-content: center;
         }
 
 .mo {
