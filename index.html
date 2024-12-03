@@ -492,10 +492,23 @@ button:hover {
     /* top: 25px; */
     align-items: flex-end;
     /* font-weight: 900; */
-    font-style: italic;
     font-size: 1.5em;
+    animation: skewAnimation 2s infinite;
 }
-
+@keyframes skewAnimation {
+  0% {
+    transform: none;
+  }
+  37.5% {
+    transform: skewX(-28deg);
+  }
+  62.5% {
+    transform: skewX(-28deg);
+  }
+  100% {
+    transform: none;
+  }
+}
 
 .arrow-inf {
     position: relative;
